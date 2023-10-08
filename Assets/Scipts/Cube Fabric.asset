@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285398f255b4f764bb15ceb0c17c6ef3, type: 3}
+  m_Name: Cube Fabric
+  m_EditorClassIdentifier: 
+  _cube2: {fileID: 6149842838020468078, guid: fb777fd5e053ae044aef49b18767fed0, type: 3}
+  _cube4: {fileID: 6149842838020468078, guid: 20a0ae73816d153439446e32358f2f67, type: 3}
+  _cube8: {fileID: 6149842838020468078, guid: a5e94a69c4db9bc48a9bbd4a87aa4d78, type: 3}
+  _cube16: {fileID: 6149842838020468078, guid: ea41c28eb057cae4db92d000d14d1289, type: 3}
+  _cube32: {fileID: 6149842838020468078, guid: 3f9637cdbcfac434a9dce7ba0ad7cdbc, type: 3}
+  _cube64: {fileID: 6149842838020468078, guid: d6d1d7fe15053c644828a1a31d3d5986, type: 3}
+  _cube128: {fileID: 6149842838020468078, guid: 3a28f12e30b3f8c45acb2798643ebb32,
+    type: 3}
+  _cube256: {fileID: 6149842838020468078, guid: bf3cb232733d05b4cac9ebd247357932,
+    type: 3}
+  _cube512: {fileID: 6149842838020468078, guid: bab0f62add5e72748a4e51a893fbaf05,
+    type: 3}
+  _cube1024: {fileID: 6149842838020468078, guid: e40e99dbf31bfdc41bc7094e7fd79f1f,
+    type: 3}
+  _cube2048: {fileID: 6149842838020468078, guid: dbcab70c9ef65094fa0cfbe306b673d3,
+    type: 3}
