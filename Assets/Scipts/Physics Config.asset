@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5df67a5881942645a489093c4e80d23, type: 3}
   m_Name: Physics Config
   m_EditorClassIdentifier: 
-  dropForce: 10
+  dropForce: 15
