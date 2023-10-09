@@ -29,7 +29,7 @@ public class CubeController : MonoBehaviour
     }
     public IEnumerator SpawnCube()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         Cube cube = _spawner.StartSpawn(_spawnPoints.spawnPoint.position);
         _inputHandler.SetCube(cube);
     }
