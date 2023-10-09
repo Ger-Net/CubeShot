@@ -2,6 +2,10 @@
 
 public class PCControll : InputHandler
 {
+    public PCControll(CubePhysicsConfig physicsConfig) : base(physicsConfig)
+    {
+    }
+
     public override void Input(float sensivity, float roadSize)
     {
         if (UnityEngine.Input.GetMouseButtonDown(0))

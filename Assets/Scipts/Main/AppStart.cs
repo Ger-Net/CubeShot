@@ -3,14 +3,14 @@
 public class AppStart : MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
-    [SerializeField] private Transform _startSpawnPoint;
+    [SerializeField] private Transform _endSpawnPoint;
     [SerializeField] private CubeController _cubeController;
 
 
     private void Awake()
     {
-        Cube cube = _spawner.StartSpawn(_startSpawnPoint.position);
+        Cube cube2 = _spawner.StartSpawn(_endSpawnPoint.position);
         _cubeController.Init();
-        _cubeController.SetCube(cube);
+        _cubeController.SpawnNewCube();
     }
 }

@@ -1,6 +1,4 @@
-﻿using DG.Tweening;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 public class Merger : MonoBehaviour
 {
@@ -10,7 +8,7 @@ public class Merger : MonoBehaviour
 
     public void Merge(Cube cube1, Cube cube2)
     {
-        Cube cube = _spawner.Spawn(cube1, cube1.gameObject.transform.position);
+        Cube cube = _spawner.MergeSpawn(cube1, cube1.gameObject.transform.position);
         cube.OnCollisionDetected += Merge;
         cube1.OnCollisionDetected -= Merge;
         cube2.OnCollisionDetected -= Merge;

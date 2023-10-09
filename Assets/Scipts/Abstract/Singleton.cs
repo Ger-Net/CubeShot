@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//No usage
 public abstract class Singleton<T> : Singleton where T : MonoBehaviour
 {
     private static T _instance;
