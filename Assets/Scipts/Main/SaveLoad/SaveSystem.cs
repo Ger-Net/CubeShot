@@ -12,6 +12,10 @@ public class SaveSystem : MonoBehaviour
     }
     public void Save()
     {
+        if (!File.Exists(_path))
+        {
+            File.Create(_path);
+        }
         var cubes = FindObjectsOfType<Cube>().Where(t=> t != Singleton<CubeController>.Instance.CurrentCube);
         MapInfo mapInfo = new MapInfo();
         mapInfo.cubes = new List<CubeDTO>();
@@ -29,6 +33,10 @@ public class SaveSystem : MonoBehaviour
     }
     public MapInfo Load()
     {
+        if (!File.Exists(_path))
+        {
+            File.Create(_path);
+        }
         string json = "";
         using(var reader = new StreamReader(_path)) 
         {
@@ -54,4 +62,5 @@ public class SaveSystem : MonoBehaviour
         };
         return cubeDTO;
     }
+
 }

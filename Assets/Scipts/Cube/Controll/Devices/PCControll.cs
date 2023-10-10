@@ -21,6 +21,7 @@ public class PCControll : InputHandler
             _move = 0;
 
             Impulse();
+            return;
         }
 
         if (_touched)

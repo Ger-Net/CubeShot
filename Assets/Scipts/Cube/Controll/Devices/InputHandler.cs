@@ -25,6 +25,7 @@ public abstract class InputHandler
     {
         _currentCube.GetComponent<Rigidbody>().AddForce(_currentCube.transform.forward * _physicsConfig.dropForce, ForceMode.Impulse);
         OnImpulse?.Invoke();
+        _currentCube = null;
     }
     public void SetCube(Cube cube)
     {
