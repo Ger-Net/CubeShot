@@ -14,6 +14,8 @@ public abstract class InputHandler
     protected bool _touched;
 
     protected Cube _currentCube;
+
+    public Cube CurrentCube => _currentCube;
     public InputHandler(CubePhysicsConfig physicsConfig)
     {
         _physicsConfig = physicsConfig;

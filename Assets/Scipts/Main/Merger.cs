@@ -36,7 +36,7 @@ public class Merger : MonoBehaviour
         }
         else
         {
-            finalVelocity = CalculateVelocity(cube, new(Random.Range(-1, 1), 0, Random.Range(-1, 1)));  
+            finalVelocity = CalculateVelocity(cube, new(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f)));  
         }
         rigidbody.AddForce(finalVelocity * rigidbody.mass, ForceMode.Impulse);
     }

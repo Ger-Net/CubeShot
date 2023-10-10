@@ -11,6 +11,7 @@ public class CubeController : MonoBehaviour
 
     private InputHandler _inputHandler;
 
+    public Cube CurrentCube {  get; private set; }
     public void Init()
     {
         if (Application.platform == RuntimePlatform.Android)
@@ -20,7 +21,7 @@ public class CubeController : MonoBehaviour
         _inputHandler.OnImpulse += SpawnNewCube;
     }
     private void Update()
-    {
+    { 
         _inputHandler.Input(_sensivity,_roadSize);
     }
     public void SpawnNewCube()
@@ -32,5 +33,7 @@ public class CubeController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Cube cube = _spawner.StartSpawn(_spawnPoints.spawnPoint.position);
         _inputHandler.SetCube(cube);
+        CurrentCube = _inputHandler.CurrentCube;
+        Singleton<GameOver>.Instance.SetCube(cube);
     }
 }

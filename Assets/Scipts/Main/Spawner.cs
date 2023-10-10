@@ -11,6 +11,13 @@ public class Spawner : MonoBehaviour
         spawnedCube.transform.position = spawnPosition;
         return spawnedCube;
     }
+    public Cube Spawn(CubeDTO cubeDTO,Vector3 spawnPosition)
+    {
+        Cube spawnedCube = _fabric.Get(cubeDTO.index);
+        spawnedCube.transform.position = spawnPosition;
+        spawnedCube.OnCollisionDetected += Singleton<Merger>.Instance.Merge;
+        return spawnedCube;
+    }
     public Cube StartSpawn(Vector3 spawnPosition)
     {
         Cube spawnedCube = _fabric.Get(0);

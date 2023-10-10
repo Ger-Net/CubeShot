@@ -8,6 +8,9 @@ public class AndroidControll : InputHandler
 
     public override void Input(float sensivity, float roadSize)
     {
+        if (_currentCube == null)
+            return;
+
         if (UnityEngine.Input.touchCount == 0)
             return;
 

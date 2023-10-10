@@ -8,6 +8,8 @@ public class PCControll : InputHandler
 
     public override void Input(float sensivity, float roadSize)
     {
+        if (_currentCube == null)
+            return;
         if (UnityEngine.Input.GetMouseButtonDown(0))
         {
             _touched = true;
