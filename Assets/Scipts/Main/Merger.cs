@@ -1,21 +1,27 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using Random = UnityEngine.Random;
 
 public class Merger : MonoBehaviour
 {
+    public event Action<int> OnMerged;
     [SerializeField] private Spawner _spawner;
 
     public void Merge(Cube cube1, Cube cube2)
     {
         Cube cube = _spawner.MergeSpawn(cube1, cube1.gameObject.transform.position);
+
         cube.OnCollisionDetected += Merge;
         cube1.OnCollisionDetected -= Merge;
         cube2.OnCollisionDetected -= Merge;
+
         Destroy(cube1.gameObject);
         Destroy(cube2.gameObject);
+
         Jump(cube);
-        
+
+        OnMerged?.Invoke(cube.Data.Score);
     }
     private void Awake()
     {
@@ -41,6 +47,8 @@ public class Merger : MonoBehaviour
         rigidbody.AddForce(finalVelocity * rigidbody.mass, ForceMode.Impulse);
     }
 
+
+    //https://forum.unity.com/threads/how-to-calculate-force-needed-to-jump-towards-target-point.372288/
     private Vector3 CalculateVelocity(Cube cube, Vector3 position)
     {
         float gravity = Physics.gravity.magnitude;

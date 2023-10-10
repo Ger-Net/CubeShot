@@ -6,24 +6,29 @@ public class AppStart : MonoBehaviour
     [SerializeField] private CubeController _cubeController;
     [SerializeField] private SaveSystem _saveSystem;
 
-    private void Start()
+    private SaveData _saveData;
+
+    public SaveData SaveData => _saveData;
+
+    public void StartGame()
     {
-        MapInfo map = _saveSystem.Load();
-        FillField(map);
+        Debug.Log("Start");
+        _saveData = _saveSystem.Load();
+        Debug.Log(_saveData.scoreModel.score);
+        Debug.Log(_saveData.cubes);
+        FillField(_saveData);
     }
     public void CleanField()
     {
         var cubes = FindObjectsOfType<Cube>();
-        if (cubes.Length == 0)
-            return;
-        foreach (var cube in cubes)
-        {
-            Destroy(cube.gameObject);
-        }
+        if (cubes.Length > 0)
+            foreach (var cube in cubes)
+                Destroy(cube.gameObject);
+        
         _cubeController.Init();
         _cubeController.SpawnNewCube();
     }
-    private void FillField(MapInfo mapInfo)
+    private void FillField(SaveData mapInfo)
     {
         if (mapInfo == null || mapInfo.cubes.Count < 1)
         {
@@ -40,4 +45,5 @@ public class AppStart : MonoBehaviour
         _cubeController.Init();
         _cubeController.SpawnNewCube();
     }
+
 }

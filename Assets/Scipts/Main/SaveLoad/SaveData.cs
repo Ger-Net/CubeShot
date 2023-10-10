@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 
 [Serializable]
-public class MapInfo
+public class SaveData
 {
+    public ScoreModel scoreModel;
     public List<CubeDTO> cubes;
 }

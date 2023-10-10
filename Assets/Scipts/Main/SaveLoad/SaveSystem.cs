@@ -10,28 +10,32 @@ public class SaveSystem : MonoBehaviour
     {
         _path = Application.persistentDataPath + "/Save.json";
     }
-    public void Save()
+    private void Save()
     {
         if (!File.Exists(_path))
         {
             File.Create(_path);
         }
+
         var cubes = FindObjectsOfType<Cube>().Where(t=> t != Singleton<CubeController>.Instance.CurrentCube);
-        MapInfo mapInfo = new MapInfo();
-        mapInfo.cubes = new List<CubeDTO>();
+        SaveData saveData = new SaveData();
+        saveData.scoreModel = new ScoreModel() { score = Singleton<MainGame>.Instance.GetScore() };
+        saveData.cubes = new List<CubeDTO>();
+        
         foreach (Cube cube in cubes)
         {
-            mapInfo.cubes.Add(CreateDTO(cube));
+            saveData.cubes.Add(CreateDTO(cube));
         }
-        var json = JsonUtility.ToJson(mapInfo);
+
+        var json = JsonUtility.ToJson(saveData);
 
         using (var writer = new StreamWriter(_path))
         {
             writer.WriteLine(json);
         }
-        Debug.Log("Saved on " + _path);
+        //Debug.Log("Saved on " + _path);
     }
-    public MapInfo Load()
+    public SaveData Load()
     {
         if (!File.Exists(_path))
         {
@@ -44,8 +48,9 @@ public class SaveSystem : MonoBehaviour
             while((line = reader.ReadLine()) != null) { json += line; }
         }
         if (string.IsNullOrEmpty(json)) return new();
-        return JsonUtility.FromJson<MapInfo>(json);
+        return JsonUtility.FromJson<SaveData>(json);
     }
+
     private void OnApplicationQuit()
     {
         Save();
