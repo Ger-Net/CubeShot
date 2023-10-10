@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using UnityEditor.TextCore.Text;
 using UnityEngine;
 
 public abstract class InputHandler

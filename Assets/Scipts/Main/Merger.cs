@@ -7,21 +7,29 @@ public class Merger : MonoBehaviour
 {
     public event Action<int> OnMerged;
     [SerializeField] private Spawner _spawner;
+    [SerializeField] private GameObject _winPanel;
 
     public void Merge(Cube cube1, Cube cube2)
     {
         Cube cube = _spawner.MergeSpawn(cube1, cube1.gameObject.transform.position);
-
+        
         cube.OnCollisionDetected += Merge;
         cube1.OnCollisionDetected -= Merge;
         cube2.OnCollisionDetected -= Merge;
 
         Destroy(cube1.gameObject);
         Destroy(cube2.gameObject);
-
+        
+        OnMerged?.Invoke(cube.Data.Score);
+        
+        if(cube.Data.Index == 10)
+        {
+            _winPanel.SetActive(true);    
+        }
+        
         Jump(cube);
 
-        OnMerged?.Invoke(cube.Data.Score);
+       
     }
     private void Awake()
     {
